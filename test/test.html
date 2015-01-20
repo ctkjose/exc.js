@@ -1,0 +1,37 @@
+<!doctype html>
+
+  <link rel="stylesheet" href="qunit.css">
+
+  <p>Test</p>
+  <p>Test</p>
+
+<h2>Greetings</h2>
+<div class="container">
+  <div class="inner">Hello</div>
+  <div class="inner">Goodbye</div>
+</div>
+
+  <button id="btn" class="j">Click</button>
+
+  <div id="qunit"></div>
+  <div id="qunit-fixture"></div>
+
+  <script src="qunit.js"></script>
+
+  <!--[if IE 8]>
+  <script src="../ki.ie8.js"></script>
+  <![endif]-->
+
+  <!--[if !IE]> -->
+  <script src="../ki.js"></script>
+  <!-- <![endif]-->
+
+  <script>
+	$( ".inner" ).append( "<p class='t'>Test</p>" );
+    
+	
+  </script>
+  
+  <!--
+  <script src="tests1.js"></script>
+-->

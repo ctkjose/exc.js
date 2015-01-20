@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Test for exc.js Core</title>
+	<script type='text/javascript' src='../exc.js'></script>
+	
+	<script type='text/javascript'>
+	</script>
+</head>
+<body>
+<h2>Greetings</h2>
+<div class="container">
+  <div class="inner">Hello</div>
+  <div class="inner">Goodbye</div>
+</div>
+<input type="checkbox"/>
+<button id="btn1" class="j">Click</button>
+<button id="btn2" class="j" style="display: none;">Click</button>
+
+<script>
+	function test(){
+		var btn = jq.$("#btn1");
+		var btn2 = jq.$("#btn2");
+		console.log(btn);
+		
+		if (btn.hasClass("j") ) {
+			console.log("ok hasClass()");
+		}
+		if (btn.is("button") ) {
+			console.log("ok is()");
+		}
+		btn.html("Joe1");
+		btn2.text("Joe2");
+		
+		btn2.show();
+		
+		btn.hide();
+		
+		
+		var el1 = $("input[type=checkbox]");
+		console.log("checked=" + el1.attr("checked") );
+		if (el1.hasAttr("checked")) {
+			el1.removeAttr("checked");
+		}else{
+			el1.attr("checked", "checked");
+		}
+			
+		var c = $("div.container");
+		c.append("<b>Inside</b>");
+		c.prepend("<b>Outside</b>");
+	}
+	
+	function ready(){
+		console.log("do is ready");
+		
+	}
+	
+	jq.$(ready);
+	
+</script>
+</body>
+	
