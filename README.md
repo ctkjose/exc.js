@@ -2,7 +2,7 @@
 
 exc.js is a small jQuery-like API JavaScript library inspired by ki.js and zepto.js. The goal is to provide a small footprint, be as close as possible to native javascript while providing a basic compatibility with jquery.
 
-I use exc.js because I find myself using a small subset of jQuery in many projects, and when size is an issue. Todays browsers are not as bad as you expect, they have a good set of functionality for web applications, you may not need so much sugar on top of it.
+I use exc.js because I find myself using a small subset of jQuery in many projects, and jquery keeps getting fatter. Todays browsers are not as bad as you expect, they have a good set of functionality for web applications, you may not need so much sugar on top of you browsers javascript. The idea behind exc.js is to remove some of the extra sugar.
 
 Currently at ~8kb uncompressed.
 
