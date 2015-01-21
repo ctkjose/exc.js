@@ -44,7 +44,7 @@ $(document).ready(initialize_my_page);
 
 
 
-### What can you pass to most `exc.js` functions and methods.
+### What can you pass to most functions and methods.
 
 Must functions that operate on DOM elements accept a selector as defined by the [DOM Sepcification](http://dev.w3.org/2006/webapi/selectors-api2/) and supported by most modern browsers.
 
@@ -58,7 +58,11 @@ Some functions allows to pass a string with valid HTML code. The documentation w
 
 In many instances the documentation will use a pipe character to indicate when more than one type is allowed for example `["selector"|elementNode|"html"|exc]` as in `.append(["selector"|elementNode|"html"|exc])`.
 
-A string argument is represented in the documentation as `"string"`, an object as `obj`, an array as `array`, a boolean value is `bool` and numbers as `number`.
+A string argument is represented in the documentation as `"string"`. When a string is a particular thing we may use a name inside the quotes for example a css property like `border-left` would be `"css-property-name"`, etc.
+
+An object as `obj`, an array as `array`, a boolean value is `bool` and numbers as `number`.
+
+
 
 ### CSS Selectors
 Use any CSS selector that exists to get elements from the DOM.
