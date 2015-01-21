@@ -109,17 +109,14 @@
 			});
 		},
 		prop: function(a, v) {
+			a = ({'tabindex': 'tabIndex','readonly': 'readOnly','for': 'htmlFor','class': 'className', 'maxlength': 'maxLength','cellspacing': 'cellSpacing','cellpadding': 'cellPadding','rowspan': 'rowSpan','colspan': 'colSpan','usemap': 'useMap','frameborder': 'frameBorder','contenteditable': 'contentEditable'}[a] || a);
 			var b = (['checked'].indexOf(a) >= 0) ? true : false;
 			if(v === []._){
 				v = this[0][a];
 				v = ((v === []._) || (v == null)) ? 'undefined' : v;
 				return v;
 			}else{
-				this.each(function() {
-					this[a]=v;
-					if(b){ if(!v){ this.removeAttribute(a); return; } v = a; }
-					this.setAttribute(a, v);
-				});
+				this.each(function() {this[a]=v;});
 			}
 			return this;
 		},
