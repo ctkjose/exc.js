@@ -2,7 +2,7 @@
 
 exc.js is a small jQuery-like API JavaScript library inspired by ki.js and zepto.js. The goal is to provide a small footprint, be as close as possible to native javascript while providing a basic compatibility with jquery.
 
-Use exc.js if you find yourself always using a small subset of jQuery, and when size is a issue.
+I use exc.js because I find myself using a small subset of jQuery in many projects, and when size is an issue. Todays browsers are not as bad as you expect, they have a good set of functionality for web applications, you may not need so much sugar on top of it.
 
 Currently at ~8kb uncompressed.
 
@@ -43,23 +43,23 @@ $(document).ready(initialize_my_page);
 ```
 
 
-### What can you pass to most functions and methods.
+### Trying to use this readme as a guide!
 
 Must functions that operate on DOM elements accept a selector as defined by the [DOM Sepcification](http://dev.w3.org/2006/webapi/selectors-api2/) and supported by most modern browsers.
 
 This documentation will describe selector arguments as `"selector"`. For example: `.append("selector")`.
 
-You can also pass DOM nodes as provided by native JavaScript functions. The documentation will describe an argument that accepts a node as `elementNode`. For example: `.append(elementNode)`.
+You can also pass DOM nodes as provided by native JavaScript functions. The documentation will describe an argument that accepts a node as `elem`. For example: `.append(elem)`. Also code examples will use `elem` when referring to an instance of a DOM node/element. 
 
-A node can also be represented as an instance of an `exc` object. The documentation will describe an argument that accepts an `exc` instance as `exc`. For example: `.append(exc)`.
+A node can also be represented as an instance of an `exc` object. The documentation will describe an argument that accepts an `exc` instance as `exc`. For example: `.append(exc)`. Code examples will use variables prefixed with the dollar sign to indicate that their are instances of an exc object, for example `var $aForm = $("#myForm");`.
 
 Some functions allows to pass a string with valid HTML code. The documentation will describe an argument that accepts a valid HTML string as `"html"`. For example: `.append("html")`.
 
-In many instances the documentation will use a pipe character to indicate when more than one type is allowed for example `["selector"|elementNode|"html"|exc]` as in `.append(["selector"|elementNode|"html"|exc])`.
+In many instances the documentation will use a pipe character to indicate when more than one type is allowed for example `["selector"|elem|"html"|exc]` as in `.append(["selector"|elem|"html"|exc])`.
 
 A string argument is represented in the documentation as `"string"`. When a string is a particular thing we may use a name inside the quotes for example a css property like `border-left` would be `"css-property-name"`, etc.
 
-When you can pass a value (a string, number, etc) the documentation will use the word `value`.
+When you can pass a simple primitive value (a string, number, or boolean) the documentation will use the word `value`.
 
 An object as `obj`, an array as `array`, a boolean value is `bool` and numbers as `number`.
 
@@ -141,7 +141,7 @@ $.extend(obj1,obj2,obj3);
 
 ### Other methods to be documented...
 
-.first(), .last(), .html(), .html("string"), .text(), .text("string"), .parseHTML("html"), .attr("string"), .attr("string", value), .removeAttr("string"), .hasAttr("string")
+.first(), .last(), .html(), .html("string"), .text(), .text("string"), .parseHTML("html"), .attr("string"), .attr("string", value), .removeAttr("string"), .hasAttr("string"), .prop("string"), .prop("string", value)
 
 
 ## Methods to get and set CSS-related properties of elements.
@@ -210,7 +210,29 @@ to be documented...
 ### .parent()
 to be documented...
 
+## Forms
 
+### Working with radios and checkboxes
+
+Test if a checkbox is `checked` with:
+```javascript
+if( $(aCheckbox).is(":checked") ){
+	console.log("is checked");
+}
+
+if( $(aCheckbox).prop("checked") ){
+	console.log("is checked");
+}
+
+```
+
+You can use `.attr()` to test for `checked` but must browsers check attributes against the actual HTML contents. If the `checked` attribute was not used on a checkbox you will not be able to test for `checked`. The `.prop()` method uses the node properties which are values computed by the browser.
+
+
+Set the check state with the following code:
+```javascript
+$(aCheckbox).prop("checked", true);
+```
 
 ## Credits
 

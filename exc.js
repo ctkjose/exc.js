@@ -108,6 +108,21 @@
 				this.setAttribute(a, v);
 			});
 		},
+		prop: function(a, v) {
+			var b = (['checked'].indexOf(a) >= 0) ? true : false;
+			if(v === []._){
+				v = this[0][a];
+				v = ((v === []._) || (v == null)) ? 'undefined' : v;
+				return v;
+			}else{
+				this.each(function() {
+					this[a]=v;
+					if(b){ if(!v){ this.removeAttribute(a); return; } v = a; }
+					this.setAttribute(a, v);
+				});
+			}
+			return this;
+		},
 		removeAttr: function(a) {
 			return this.each(function() {
 				this.removeAttribute(a);

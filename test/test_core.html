@@ -16,7 +16,7 @@
 </div>
 
 
-<input type="checkbox" name='check1' value1='jose1'/> 
+<input type="checkbox" name='check2' value1='jose1'/> 
 <input type="checkbox" name='check1' value1='jose2'/><br>
 <input type='test' name="q" value='' placeholder='here...'><br>
 <select name='s1'>
@@ -65,10 +65,11 @@
 		c.toggleClass("m");
 	}
 	function test1(){
-	  var c = $("[name=s1]");
+	  var c = $("[name=check1]");
 	  console.log(c);
-	  
-	  console.log( c.val() );
+	  console.log("checked=" + c.attr("checked") );
+	  console.log( c.prop("checked") );
+	  console.log( c.prop("checked", true) );
 	}
 	function myReady(){
 		console.log("do is ready");
