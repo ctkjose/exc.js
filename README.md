@@ -5,12 +5,12 @@ exc.js is a small jQuery-like API JavaScript library inspired by ki.js and zepto
 
 ### Browser support
 
-[exc.js](https://github.com/dciccale/ki.js/blob/master/ki.js) **(recommended)** version is supported by the following browsers: IE9+, Chrome 6+, Safari 5+, Firefox 6+, Opera 11.5+.
+[exc.js](https://github.com/ctkjose/exc.js) **(recommended)** version is supported by the following browsers: IE9+, Chrome 6+, Safari 5+, Firefox 6+, Opera 11.5+.
 
 
 ## Getting started with exc.js
 
-Include the exc.js script file.
+Include the exc.js script file in your header.
 
 ```html
 <script src="exc.js"></script>
@@ -34,13 +34,14 @@ function initialize_my_page() {
 $(initialize_my_page);
 ```
 
-
-you can register a function to exc.js to be exe
-
+This jquery syntax is also available:
+```javascript
+$(document).ready(initialize_my_page);
+```
 
 ## What can I do with exc.js?
 
-With ki.js you can do the basic stuff jQuery can, for example:
+With exc.js you can do the basic stuff jQuery can, for example:
 
 ### DOM Ready?
 
@@ -52,10 +53,26 @@ $(function () {
 ```
 **This was just ki.js, no jQuery**
 
+
+### What can you pass to most `exc.js` functions and methods.
+
+Must functions that operate on DOM elements accept a selector as defined by the [DOM Sepcification](http://dev.w3.org/2006/webapi/selectors-api2/) and supported by most modern browsers.
+
+This documentation will describe selector arguments as `"selector"`. For example: `.append("selector")`.
+
+You can also pass DOM nodes as provided by native JavaScript functions. The documentation will describe an argument that accepts a node as `elementNode`. For example: `.append(excObject)`.
+
+Some functions allows to pass a string with valid HTML code. The documentation will describe an argument that accepts a valid HTML string as `"html"`. For example: `.append("html")`.
+
+In many instances the documentation will use `[selectors]` to indicate that all three of the above values are allowed.
+
 ### CSS Selectors
 Use any CSS selector that exists to get elements from the DOM.
 
 ```javascript
+$('#anID');
+$('.class');
+$('div.class');
 $('p:nth-last-of-type(2)');
 $('[attribute|=value]');
 $('p:not(.note)');
@@ -69,7 +86,7 @@ $('p:empty');
 Yes, events with the known `.on()` and `.off()` methods
 
 ```html
-<button>ki.js</button>
+<button>exc.js</button>
 ```
 ```javascript
 $(function () {
@@ -91,7 +108,7 @@ The `each()` is also included in the core of ki.js for easy iterating a DOM coll
 ```javascript
 $(function () {
   // get all p tags
-  $('p').each(function (elem, i) {
+  $('p').each(function (i, elem) {
     // change color to red
     elem.style.color = 'red';
     // append the index to the text
@@ -121,7 +138,11 @@ $.extend(obj1,obj2,obj3);
 
 ##Manipulate DOM
 
-### .append()
+### .append()  .prepend()
+Insert content, specified by the parameter, to the end of each element in the set of matched elements.
+
+
+
 ```html
 <h2>Greetings</h2>
 <div class="container">
@@ -144,53 +165,6 @@ $( ".inner" ).append( "<p>Test</p>" );
 $( ".hello" ).remove();
 ```
 
-### Keep the chain!
-All methods of ki.js are chainable, just like jQuery.
+## Credits
 
-## Plugins?
-Yeah, you could write plugins for ki.js if you want, fork the project for making them, keep them super super xxs and I promise to merge them into the official repo.
-
-### ki.extend
-
-Check out a lot of already made extensions for ki.js here: [ki.extend.js](https://github.com/james2doyle/ki.extend.js) (thanks to [james2doyle](https://github.com/james2doyle))
-
-### How to make plugins?
-Just add your methods to the prototype of ki.js and you're done.
-For example, let's add a `text()` method for setting or getting the text of the elements, in the tiniest way I can think of:
-
-```javascript
-// minified is 106 bytes
-$.prototype.text = function (a) {
-  return a === a + '' ? this.each(function (b) {
-    b.textContent = a
-  }) : this[0].textContent
-};
-```
-
-Now use the plugin just like the other methods:
-```javascript
-$(function () {
-  // <p>hello</p>
-
-  // get the text from the p tag
-  console.log($('p').text()); // hello
-
-  // set another text
-  $('p').text('bye'); // bye
-});
-```
-<hr>
-<strong>Create your own plugin and let's make the tiniest JavaScript Library ever!
-Remember to write byte-saving code, see this [useful resource for JavaScript byte-saving techniques](https://github.com/jed/140bytes/wiki/Byte-saving-techniques) written by 140byt.es community</strong>
-<hr>
-
-## Where can i use ki.js?
-
-In every cool and modern browser.
-
-## The Code
-The code of ki.js was written for byte-saving, so I don't recommend using this script for a real application or website.
-It was done for fun, and the funniest part is that it actually works :)
-
-## License
-See [LICENSE.txt](https://raw.github.com/dciccale/ki.js/master/LICENSE.txt)
+Based on original work of [james2doyle](https://github.com/james2doyle) and [james2doyle](https://github.com/james2doyle) 
