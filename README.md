@@ -1,7 +1,8 @@
 # exc.js
-test
 
 exc.js is a small jQuery-like API JavaScript library inspired by ki.js and zepto.js. The goal is to provide a small footprint, be as close as possible to native javascript while providing a basic compatibility with jquery.
+
+Currently at ~8kb uncompressed.
 
 ### Browser support
 
@@ -78,7 +79,7 @@ $('p:empty');
 
 
 ### Events
-Yes, events with the known `.on()` and `.off()` methods
+Events with the known `.on()` and `.off()` methods
 
 ```html
 <button>exc.js</button>
@@ -131,7 +132,7 @@ var obj3 = {c:"3"};
 $.extend(obj1,obj2,obj3);
 ```
 
-### Other methods
+### Other methods to be documented...
 
 .first(), .last(), .html(), .html("string"), .text(), .text("string"), .parseHTML("html"), .attr(), .removeAttr(), .hasAttr()
 
@@ -149,15 +150,19 @@ $(".mydiv").css({ "background-color": "#ffe", "border-left": "5px solid #ccc" })
 You can also use DOM based style properties as used in javascript, for example `backgroundColor` for `background-color`.
 
 ### .addClass("class-name")
+to be documented...
 
 ### .hasClass("class-name")
+to be documented...
 
 ### .removeClass("class-name")
+to be documented...
 
 ### .toggleClass("class-name")
+to be documented...
 
 ### .toggleClass("class-name", state)
-
+to be documented...
 
 ##Manipulate DOM
 
@@ -187,13 +192,16 @@ $( ".hello" ).remove();
 ```
 
 ### .hide() .show()
+to be documented...
 
 ### .before()
+to be documented...
 
 ### .after()
+to be documented...
 
 ### .parent()
-
+to be documented...
 
 
 
