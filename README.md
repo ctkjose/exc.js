@@ -2,11 +2,13 @@
 
 exc.js is a small jQuery-like API JavaScript library inspired by ki.js and zepto.js. The goal is to provide a small footprint, be as close as possible to native javascript while providing a basic compatibility with jquery.
 
+Use exc.js if you find yourself always using a small subset of jQuery, and when size is a issue.
+
 Currently at ~8kb uncompressed.
 
 ### Browser support
 
-[exc.js](https://github.com/ctkjose/exc.js) **(recommended)** version is supported by the following browsers: IE9+, Chrome 6+, Safari 5+, Firefox 6+, Opera 11.5+.
+Currently only tested in: Chrome, Safari, Firefox.
 
 
 ## Getting started with exc.js
@@ -41,9 +43,6 @@ $(document).ready(initialize_my_page);
 ```
 
 
-
-
-
 ### What can you pass to most functions and methods.
 
 Must functions that operate on DOM elements accept a selector as defined by the [DOM Sepcification](http://dev.w3.org/2006/webapi/selectors-api2/) and supported by most modern browsers.
@@ -59,6 +58,8 @@ Some functions allows to pass a string with valid HTML code. The documentation w
 In many instances the documentation will use a pipe character to indicate when more than one type is allowed for example `["selector"|elementNode|"html"|exc]` as in `.append(["selector"|elementNode|"html"|exc])`.
 
 A string argument is represented in the documentation as `"string"`. When a string is a particular thing we may use a name inside the quotes for example a css property like `border-left` would be `"css-property-name"`, etc.
+
+When you can pass a value (a string, number, etc) the documentation will use the word `value`.
 
 An object as `obj`, an array as `array`, a boolean value is `bool` and numbers as `number`.
 
@@ -106,7 +107,7 @@ You can add any JavaScript event even touch events for mobile, under the hood ex
 The `each()` is also included in the core of ki.js for easy iterating a DOM collection.
 
 ```javascript
-$(function () {
+
   // get all p tags
   $('p').each(function (i, elem) {
     // change color to red
@@ -114,11 +115,13 @@ $(function () {
     // append the index to the text
     elem.textContent += i;
   });
-});
+
 ```
 
+Just like jQuery this represents the DOM element you are operating on, use `$(this)` to convert it to an exc instance.
+
 ### .is()
-The `is("aselector")` returns true if the item matches the selector given.
+The `is("selector")` returns true if the item matches the selector given.
 ```html
 <div id="main_news" class="news"></div>
 ```
@@ -127,7 +130,7 @@ $("#main_news").is(".news");
 ```
 
 ### .extend()
-The `extend()` merges the contents of the objects passed into the first object. It returns the first object.
+The `extend(obj)` merges the contents of the objects passed into the first object. It returns the first object.
 ```javascript
 var obj1 = {a:"1"};
 var obj2 = {b:"2"};
@@ -138,10 +141,10 @@ $.extend(obj1,obj2,obj3);
 
 ### Other methods to be documented...
 
-.first(), .last(), .html(), .html("string"), .text(), .text("string"), .parseHTML("html"), .attr(), .removeAttr(), .hasAttr()
+.first(), .last(), .html(), .html("string"), .text(), .text("string"), .parseHTML("html"), .attr("string"), .attr("string", value), .removeAttr("string"), .hasAttr("string")
 
 
-##Methods to get and set CSS-related properties of elements.
+## Methods to get and set CSS-related properties of elements.
 
 ### .css("css-property-name")
 Returns the value of a css property name.
@@ -168,7 +171,7 @@ to be documented...
 ### .toggleClass("class-name", state)
 to be documented...
 
-##Manipulate DOM
+## Manipulate DOM
 
 ### .append()  .prepend()
 Insert content, specified by the parameter, to the end of each element in the set of matched elements.
