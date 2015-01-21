@@ -60,11 +60,15 @@ Must functions that operate on DOM elements accept a selector as defined by the 
 
 This documentation will describe selector arguments as `"selector"`. For example: `.append("selector")`.
 
-You can also pass DOM nodes as provided by native JavaScript functions. The documentation will describe an argument that accepts a node as `elementNode`. For example: `.append(excObject)`.
+You can also pass DOM nodes as provided by native JavaScript functions. The documentation will describe an argument that accepts a node as `elementNode`. For example: `.append(elementNode)`.
+
+A node can also be represented as an instance of an `exc` object. The documentation will describe an argument that accepts an `exc` instance as `exc`. For example: `.append(exc)`.
 
 Some functions allows to pass a string with valid HTML code. The documentation will describe an argument that accepts a valid HTML string as `"html"`. For example: `.append("html")`.
 
-In many instances the documentation will use `[selectors]` to indicate that all three of the above values are allowed.
+In many instances the documentation will use a pipe character to indicate when more than one type is allowed for example `["selector"|elementNode|"html"|exc]` as in `.append(["selector"|elementNode|"html"|exc])`.
+
+A string argument is represented in the documentation as `"string"`, an object as `obj`, an array as `array`, a boolean value is `bool` and numbers as `number`.
 
 ### CSS Selectors
 Use any CSS selector that exists to get elements from the DOM.
