@@ -14,7 +14,15 @@
   <div class="inner">Hello</div>
   <div class="inner">Goodbye</div>
 </div>
-<input type="checkbox"/>
+
+
+<input type="checkbox" name='check1' value1='jose1'/> 
+<input type="checkbox" name='check1' value1='jose2'/><br>
+<input type='test' name="q" value='' placeholder='here...'><br>
+<select name='s1'>
+  <option value='v1'>value 1</option>
+  <option value='v2'>value 2</option>
+</select>
 <button id="btn1" class="j">Click</button>
 <button id="btn2" class="j" style="display: none;">Click</button>
 
@@ -49,14 +57,28 @@
 		var c = $("div.container");
 		c.append("<b>Inside</b>");
 		c.prepend("<b>Outside</b>");
+		
+		
+		c.css({"border-color" : "#222222", "border-width":"1px", "border-style" : "solid"});
+		
+		c.addClass("g").addClass("m");
+		c.toggleClass("m");
 	}
-	
-	function ready(){
+	function test1(){
+	  var c = $("[name=s1]");
+	  console.log(c);
+	  
+	  console.log( c.val() );
+	}
+	function myReady(){
 		console.log("do is ready");
+		
+		
 		
 	}
 	
-	jq.$(ready);
+	jq.$(myReady);
+	jq.$(document).ready(myReady);
 	
 </script>
 </body>

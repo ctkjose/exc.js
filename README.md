@@ -39,19 +39,8 @@ This jquery syntax is also available:
 $(document).ready(initialize_my_page);
 ```
 
-## What can I do with exc.js?
 
-With exc.js you can do the basic stuff jQuery can, for example:
 
-### DOM Ready?
-
-```javascript
-$(function () {
-  // this will be executed when the dom is ready!
-  alert('Hey the DOM is ready ;)');
-});
-```
-**This was just ki.js, no jQuery**
 
 
 ### What can you pass to most `exc.js` functions and methods.
@@ -85,6 +74,8 @@ $('p:empty');
 
 [See a list of all CSS selectors](https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Getting_Started/Selectors)
 
+## What can I do with exc.js?
+
 
 ### Events
 Yes, events with the known `.on()` and `.off()` methods
@@ -104,7 +95,7 @@ $(function () {
   //$('button').off('click', alertMyName);
 });
 ```
-You can add any JavaScript event even touch events for mobile, under the hood ki.js uses addEventListener, so feel free to use any valid ECMAScript 5 event.
+You can add any JavaScript event even touch events for mobile, under the hood exc.js uses addEventListener, so feel free to use any valid ECMAScript 5 event.
 
 ### .each()
 The `each()` is also included in the core of ki.js for easy iterating a DOM collection.
@@ -140,12 +131,38 @@ var obj3 = {c:"3"};
 $.extend(obj1,obj2,obj3);
 ```
 
+### Other methods
+
+.first(), .last(), .html(), .html("string"), .text(), .text("string"), .parseHTML("html"), .attr(), .removeAttr(), .hasAttr()
+
+
+##Methods to get and set CSS-related properties of elements.
+
+### .css("css-property-name")
+Returns the value of a css property name.
+
+### .css(properties)
+Sets an elements css properties. Properties is an object with value pairs. Each entry is a css property name with its value.
+```javascript
+$(".mydiv").css({ "background-color": "#ffe", "border-left": "5px solid #ccc" });
+```
+You can also use DOM based style properties as used in javascript, for example `backgroundColor` for `background-color`.
+
+### .addClass("class-name")
+
+### .hasClass("class-name")
+
+### .removeClass("class-name")
+
+### .toggleClass("class-name")
+
+### .toggleClass("class-name", state)
+
+
 ##Manipulate DOM
 
 ### .append()  .prepend()
 Insert content, specified by the parameter, to the end of each element in the set of matched elements.
-
-
 
 ```html
 <h2>Greetings</h2>
@@ -169,6 +186,19 @@ $( ".inner" ).append( "<p>Test</p>" );
 $( ".hello" ).remove();
 ```
 
+### .hide() .show()
+
+### .before()
+
+### .after()
+
+### .parent()
+
+
+
+
 ## Credits
 
-Based on original work of [james2doyle](https://github.com/james2doyle) and [james2doyle](https://github.com/james2doyle) 
+Based on original work of [dciccale](https://github.com/dciccale) and [james2doyle](https://github.com/james2doyle).
+
+Inspired by [youmightnotneedjquery](http://youmightnotneedjquery.com).

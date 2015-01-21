@@ -27,6 +27,11 @@
 			while ((ch = t.firstChild)) { f.appendChild(ch); }
 			return f;
 		},
+		parseHTML: function(a) {
+			var tmp = document.implementation.createHTMLDocument();
+			tmp.body.innerHTML = a;
+			return tmp.body.children;
+		},
 		/*
 		* extend method
 		* merge contents of two or more objects together into the first object
@@ -87,9 +92,7 @@
 			j = a && ( a.matches || a['webkitMatchesSelector'] || a['mozMatchesSelector'] || a['msMatchesSelector'] );
 			return !!j && j.call( a, s );
 		},
-		hasClass: function(a) {
-			return this[0].classList.contains(a);
-		},
+
 		text: function(a) {
 			return a === []._ ? this[0].textContent : this.each(function() {
 				this.textContent = a;
@@ -98,16 +101,6 @@
 		html: function(a) {
 			return a === []._ ? this[0].innerHTML : this.each(function() {
 				this.innerHTML = a;
-			});
-		},
-		hide: function() {
-			return this.each(function() {
-				this.style.display = 'none';
-			});
-		},
-		show: function() {
-			return this.each(function() {
-				this.style.display = '';
 			});
 		},
 		attr: function(a, v) {
@@ -130,13 +123,59 @@
 		last: function() {
 			return $(this[this.length - 1]);
 		},
-
+		ready: function(fn) {
+			if(/c/.test(document.readyState)) fn(); else $(document).on('DOMContentLoaded', fn);
+			return this;
+		},
+		//forms
+		val: function(a){
+			var v = '';
+			
+			if ( (this.length > 1) && ( (this[0].type == 'checkbox') || (this[0].type == 'radio')) ){
+				this.each( function(){
+					if(this.checked){
+						v = this.getAttribute("value");
+					}
+				});
+			}else if(this.length == 1) {
+				v = this[0].value;
+			}
+			
+			return v;
+		},
+		
 		//dom traversing
 		parent: function() {
 			return (this.length < 2) ? $(this[0].parentNode): [];
 		},
-		
-		//dom manipulation
+		//styling
+		hasClass: function(a) {
+			return this[0].classList.contains(a);
+		},
+		addClass: function(a) {
+			this.each( function() {
+				var cl = this.classList;
+				cl.add.apply( cl, a.split( /\s/ ) );
+			});
+			return this;
+		},
+		removeClass: function(a) {
+			this.each( function() {
+				var cl = this.classList;
+				cl.remove.apply( cl, a.split( /\s/ ) );
+			});
+			return this;
+		},
+		toggleClass: function( a, b ) {
+			this.each( function() {
+				var cl = this.classList;
+				if( typeof b !== 'boolean' ) {
+					b = !cl.contains( a );
+				}
+				cl[ b ? 'add' : 'remove' ].apply( cl, a.split( /\s/ ) );
+			});
+			return this;
+		},
 		css: function(a, b) {
 			if (typeof(a) === 'object') {
 				for(var p in a) {
@@ -151,12 +190,23 @@
 				});
 			}
 		},
-		
+		//dom manipulation
 		remove: function() {
 			return this.each(function() {
 				this.parentNode.removeChild(b);
 			});
 		},
+		hide: function() {
+			return this.each(function() {
+				this.style.display = 'none';
+			});
+		},
+		show: function() {
+			return this.each(function() {
+				this.style.display = '';
+			});
+		},
+		
 		/*Insert content, specified by the parameter, to the end of each element in the set of matched elements.*/
 		append: function(a) {
 			this.each( function(i, e) {
@@ -234,9 +284,6 @@
 		return o
 	};
 
-	
-
-	
 	return this;
 }(document, [], 'prototype');
 
