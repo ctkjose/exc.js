@@ -208,7 +208,10 @@ to be documented...
 to be documented...
 
 ### .parent()
-to be documented...
+Returns the immediate parent of an element.
+
+### .parent(selector)
+This method traverses up each immediate parent of an element until a parent element matching the <code>selector</code> is found.
 
 ## Forms
 

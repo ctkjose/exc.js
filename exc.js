@@ -157,9 +157,28 @@
 		},
 		
 		//dom traversing
-		parent: function() {
-			return (this.length < 2) ? $(this[0].parentNode): [];
+		parent: function(s) {
+			var test = function(a, b) { //helper function (see below)
+				for(var i = 0, len = a.length; i < len; i ++) {
+					if(a[i] == b) return true;
+				}
+				return false;
+			};
+		
+			var all = document.querySelectorAll(s);
+			if( typeof s !== 'string' ) {
+				return $(this[0].parentNode);
+			}else{
+				var cur = this[0].parentNode;
+				while(cur && !test(all, cur)) { //keep going up until you find a match
+					cur = cur.parentNode; //go up
+				}
+				return $(cur);	
+			}
 		},
+		
+		
+		
 		//styling
 		hasClass: function(a) {
 			return this[0].classList.contains(a);
