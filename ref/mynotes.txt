@@ -1,0 +1,35 @@
+
+
+i is the ki object
+$.prototype = i.prototype
+
+b = document
+
+$ and $i is based on array prototype
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array
+
+a is parameter of $(...)
+
+return /^f/.test(typeof a) ? /c/.test(b.readyState) ? a() : $(b).on('DOMContentLoaded', a) : new i(a)
+ 
+ if typeof starts with f of "function" then
+	if document.readyState is "complete" then
+		execute a()
+	else
+		document.on("DOMContentLoaded") set callback to a
+	end if
+else
+	initialize (a)
+end if
+	
+	
+	
+	
+Implement val()
+
+this.filter(':checked').each(function(){
+          outArr.push(this.getAttribute("value"));
+    });
+	
+is(':checked').each(function(){
+          outArr.push(this.getAttribute("value")

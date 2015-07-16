@@ -15,7 +15,7 @@
   <div class="inner">Goodbye</div>
 </div>
 
-
+<form>
 <input type="checkbox" name='check2' value1='jose1'/> 
 <input type="checkbox" name='check1' value1='jose2'/><br>
 <input type='test' name="q" value='' placeholder='here...'><br>
@@ -26,7 +26,14 @@
 <button id="btn1" class="j">Click</button>
 <button id="btn2" class="j" style="display: none;">Click</button>
 
+<div><p>Hello</p></div>
+<div class="pt2"><div class='pt1' ><p class='pta'>Parent Test 1</p><p class='ptb'>Parent Test 2</p></div></div>
+</form>
+
 <script>
+  function test2(){
+	console.log( $(".pt2").find("p") );
+  }
 	function test(){
 		var btn = jq.$("#btn1");
 		var btn2 = jq.$("#btn2");

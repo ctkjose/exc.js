@@ -77,10 +77,10 @@
 		*/
 		each: function (a) {
 			var p = [0, null];
-			for( i = 1; i < arguments.length; i++ ) {
+			for( var i = 1; i < arguments.length; i++ ) {
 				p.push( arguments[ i ] );
 			}
-			for( i = 0; i < this.length; i++ ) {
+			for( var i = 0; i < this.length; i++ ) {
 				p[0] = i
 				p[1] = this[i];   
 				a.apply(this[i], p);
@@ -157,6 +157,9 @@
 		},
 		
 		//dom traversing
+		find: function(s) {
+			return $(this[0].querySelectorAll(s));
+		},
 		parent: function(s) {
 			var test = function(a, b) { //helper function (see below)
 				for(var i = 0, len = a.length; i < len; i ++) {
@@ -310,7 +313,12 @@
 	jq.i = function (a) {
 		var o = [];
 		o[d] = Array.prototype;
-		Array.prototype.push.apply(o, a && a.nodeType ? [a] : ('' + a === a ? b.querySelectorAll(a) : []) );
+		
+		if( Object.prototype.toString.call( a ) === '[object NodeList]' ) {
+			Array.prototype.push.apply(o, a );
+		}else{
+			Array.prototype.push.apply(o, a && a.nodeType ? [a] : ('' + a === a ? b.querySelectorAll(a) : []) );
+		}
 		this.fn.extend(o[d],this.fn);
 		return o
 	};
